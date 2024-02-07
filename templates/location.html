@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    {% for uniqueLocation in location %}
+    <div class="col-sm-3 col-6">
+        <h2>{{ location.name }}</h2>
+        <h2>{{ location.type }}</h2>
+        <h2>{{ location.dimension }}</h2>
+        <h2><a href="{{ uniqueLocation.characters }}" alt="{{ uniqueLocation.characeters }}">{{ uniqueLocation.characeters }}</a></h2>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
