@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    {% for episode in episodes %}
+        <div class="col-sm-3 col-6">
+            <h2><a href="{{ episode.url }}" alt="{{ episode.name }}">{{ episode.name }}</a></h2>
+            <h2>{{episode.air_date}}</h2>
+            <h2>{{episode.id}}</h2>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

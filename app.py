@@ -12,7 +12,35 @@ def get_list_locations_page():
 
     return render_template("locations.html", locations=dict["results"])
 
-@app.route("/lista")
+@app.route("/episodes")
+def get_list_episodes_page():
+    url = "https://rickandmortyapi.com/api/episode"
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    dict = json.loads(data)
+
+    return render_template("episodes.html", episodes=dict["results"] )
+
+# def get_list_episodes():
+#     url = "https://rickandmortyapi.com/api/episode"
+#     response = urllib.request.urlopen(url)
+#     episodes = response.read()
+#     dict = json.loads(episodes)
+
+#     episodes = []
+
+#     for episode in dict["results"]:
+#         episode = {
+#             "name": episode["name"],
+#             "air_date": episode["air_date"],
+#             "id": episode["id"]
+#         }
+
+#         episodes.append(episode)
+#     return {"episodes": episodes}
+    
+
+@app.route("/locations")
 def get_list_locations():
     url = "https://rickandmortyapi.com/api/location"
     response = urllib.request.urlopen(url) 
