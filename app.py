@@ -16,10 +16,10 @@ def get_list_locations():
         location = {
             "name": location["name"],
             "type": location["type"],
-            "dimension": location["dimension"]
+            "dimension": location["dimension"],
+            "link": location["url"]
         }
 
         locations.append(location)
     
     return {"locations": locations}
-
