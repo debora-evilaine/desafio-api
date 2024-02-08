@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import urllib.request, json
+from urllib.error import HTTPError, URLError
 
 app = Flask(__name__)
 
@@ -12,12 +13,21 @@ def get_list_locations_page():
 
     return render_template("locations.html", locations=dict["results"])
 
+
 @app.route("/location/<id>")
 def get_location(id):
     url = "https://rickandmortyapi.com/api/location" + id
-    response = urllib.request.urlopen(url) 
-    data = response.read()
-    dict = json.loads(data)
+    dict =  "" #setando a variável dict como uma string vazia para evitar o erro UnboundLocalError
+    try:
+        response = urllib.request.urlopen(url) 
+        data = response.read()
+        dict = json.loads(data)
+    except urllib.error.HTTPError as e:     
+        print(e.reason)
+    except HTTPError as error:
+        print(error.status, error.reason)
+    except URLError as error:
+        print(error.reason)
 
     return render_template("location.html", location=dict)
 

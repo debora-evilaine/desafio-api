@@ -8,7 +8,7 @@
             <h2>{{ location.type }}</h2>
             <h2>{{ location.dimension }}</h2>
             <p>
-                <a href="{{ url_for('get_location', id=location.id)}}" class="btn btn-primary">Ver localização</a>
+                <a href="/location/{{location.id}}" class="btn btn-primary">Ver localização</a>
             </p>
         </div>
     {%  endfor %}
