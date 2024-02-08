@@ -16,20 +16,21 @@ def get_list_locations_page():
 
 @app.route("/location/<id>")
 def get_location(id):
-    url = "https://rickandmortyapi.com/api/location" + id
-    dict =  "" #setando a variável dict como uma string vazia para evitar o erro UnboundLocalError
+    url = "https://rickandmortyapi.com/api/location/" + id
+    uniqueLocation =  "" #setando a variável dict como uma string vazia para evitar o erro UnboundLocalError
     try:
         response = urllib.request.urlopen(url) 
         data = response.read()
-        dict = json.loads(data)
+        uniqueLocation = json.loads(data)
     except urllib.error.HTTPError as e:     
         print(e.reason)
+        print("AAAAAAA")
     except HTTPError as error:
         print(error.status, error.reason)
     except URLError as error:
         print(error.reason)
 
-    return render_template("location.html", location=dict)
+    return render_template("location.html", location=uniqueLocation)
 
 @app.route("/episodes")
 def get_list_episodes_page():
