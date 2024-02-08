@@ -7,8 +7,8 @@
     <h3>{{ location.name }}</h>
     <h2>{{ location.type }}</h2>
     <h2>{{ location.dimension }}</h2>
-    {% for resident in location.residents %} 
-        <h2><a href="{{ resident }}" alt="Residentes">Residente</a></h2>
+    {% for character in location.residents %}
+        <h2><a href="/character" alt="Residentes">Residente</a></h2>
      {% endfor %}
 </div> 
 

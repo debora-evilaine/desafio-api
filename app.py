@@ -22,6 +22,15 @@ def get_list_episodes_page():
 
     return render_template("episodes.html", episodes=dict["results"] )
 
+@app.route("/episode/<id>")
+def get_episode(id):
+    url = "https://rickandmortyapi.com/api/episode/" + id
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    uniqueEpisode = json.loads(data)
+
+    return render_template("episode.html", episode=uniqueEpisode)
+
 # def get_list_episodes():
 #     url = "https://rickandmortyapi.com/api/episode"
 #     response = urllib.request.urlopen(url)
@@ -80,11 +89,11 @@ def get_location(id):
 
     return render_template("location.html", location=uniqueLocation)
 
-@app.route("/episode/<id>")
-def get_episode(id):
-    url = "https://rickandmortyapi.com/api/episode/" + id
+@app.route("/character")
+def get_character():
+    url = "https://rickandmortyapi.com/api/character"
     response = urllib.request.urlopen(url)
     data = response.read()
-    uniqueEpisode = json.loads(data)
+    dict = json.loads(data)
 
-    return render_template("episode.html", episode=uniqueEpisode)
+    return render_template("character.html", character=dict)
