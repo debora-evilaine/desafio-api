@@ -1,0 +1,12 @@
+{% extends "layout.html" %}0
+
+{% block content %}
+<div class="row">
+    <h3>{{ episode.name }}</h3>
+    <h3>{{ episode.air_date }}</h3>
+    <h3>{{ episode.id }}</h3>
+    {% for character in episode.characters %}
+    <h3><a href="{{ character }}" alt="Personagens">Personagem</a></h3>
+    {% endfor %}
+</div>
+{% endblock %}

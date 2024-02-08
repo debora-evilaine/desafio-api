@@ -4,9 +4,10 @@
 <div class="row">
     {% for episode in episodes %}
         <div class="col-sm-3 col-6">
-            <h2><a href="{{ episode.url }}" alt="{{ episode.name }}">{{ episode.name }}</a></h2>
+            <h2>{{episode.name}}</h2>
             <h2>{{episode.air_date}}</h2>
             <h2>{{episode.id}}</h2>
+            <h2><a href="/episode/{{ episode.id }}"  class="btn btn-primary">Ver episódio</a></h2>
         </div>
     {% endfor %}
 </div>
