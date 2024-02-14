@@ -7,9 +7,10 @@
     <h3>{{ location.name }}</h>
     <h2>{{ location.type }}</h2>
     <h2>{{ location.dimension }}</h2>
-    {% for character in location.residents %}
-        <h2><a href="/character" alt="Residentes">Residente</a></h2>
-     {% endfor %}
+     {% for character_url in location.residents %}
+    <h2><a href="{{ url_for('get_character', id=character_url.split("/")[-1]) }}" alt="Residente">Residente</a></h2>
+    {% endfor %}
+
 </div> 
 
 </div>
