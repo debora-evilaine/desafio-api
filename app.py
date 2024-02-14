@@ -91,9 +91,20 @@ def get_location(id):
 
 @app.route("/character")
 def get_character():
-    url = "https://rickandmortyapi.com/api/character"
-    response = urllib.request.urlopen(url)
-    data = response.read()
-    dict = json.loads(data)
+    try:
+        url = "https://rickandmortyapi.com/api/character"
+        dict = ""
+        response = urllib.request.urlopen(url)
+        data = response.read()
+        dict = json.loads(data)
+    except urllib.error.HTTPError as e:
+        print(e.reason)
+        print("ERRO NO URLLIB!!!!!")
+    except HTTPError as error:
+        print(error.status, error.reason)
+        print("ERRO DE HTTP!!!")
+    except URLError as error:
+        print(error.reason)
+        print("ERRO DE URL!!!!!!!")
 
     return render_template("character.html", character=dict)
