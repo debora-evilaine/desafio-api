@@ -4,9 +4,20 @@
 <div class="row">
 
 <div class="col-sm-3 col-6">
+    <img src="{{ character.image }}" alt="{{ character.name }}" class="img-fluid img-thumbnail"
+/>
+    <h3>{{ character.name }}</h>
     <h3>{{ character.species }}</h>
     <h2>{{ character.gender }}</h2>
-    <h2><a href="{{ character.origin.url }}">Origem do personagem</a></h2>
+    {% if character.origin.name != "unknown" %}
+        {% set location_id = character.origin.url.split("/")[-1] %}
+            <h2><a href="{{ url_for('get_location', id=location_id) }}" alt="Localização e origem do personagem">{{ character.origin.name }}</a></h2>
+    {% else %}
+            <p>Nenhuma informação de origem disponível.</p>
+        {% endif %}
+
+
+      
 </div> 
 
 </div>
