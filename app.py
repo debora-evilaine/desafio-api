@@ -4,7 +4,12 @@ from urllib.error import HTTPError, URLError
 
 app = Flask(__name__)
 
+
 @app.route("/")
+def home_page():
+    return render_template("home.html")
+
+@app.route("/locations")
 def get_list_locations_page():
     url = "https://rickandmortyapi.com/api/location"
     response = urllib.request.urlopen(url) 
@@ -50,26 +55,26 @@ def get_episode(id):
 #     return {"episodes": episodes}
     
 
-@app.route("/locations")
-def get_list_locations():
-    url = "https://rickandmortyapi.com/api/location"
-    response = urllib.request.urlopen(url) 
-    locations = response.read()
-    dict = json.loads(locations)
+# @app.route("/locations")
+# def get_list_locations():
+#     url = "https://rickandmortyapi.com/api/location"
+#     response = urllib.request.urlopen(url) 
+#     locations = response.read()
+#     dict = json.loads(locations)
 
-    locations = []
+#     locations = []
 
-    for location in dict["results"]:
-        location = {
-            "name": location["name"],
-            "type": location["type"],
-            "dimension": location["dimension"],
-            "link": location["url"]
-        }
+#     for location in dict["results"]:
+#         location = {
+#             "name": location["name"],
+#             "type": location["type"],
+#             "dimension": location["dimension"],
+#             "link": location["url"]
+#         }
 
-        locations.append(location)
+#         locations.append(location)
     
-    return {"locations": locations}
+#     return {"locations": locations}
 
 @app.route("/location/<id>")
 def get_location(id):

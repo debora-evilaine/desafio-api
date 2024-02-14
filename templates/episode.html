@@ -5,8 +5,8 @@
     <h3>{{ episode.name }}</h3>
     <h3>{{ episode.air_date }}</h3>
     <h3>{{ episode.id }}</h3>
-    {% for character in episode.characters %}
-    <h3><a href="{{ character }}" alt="Personagens">Personagem</a></h3>
+    {% for character_url in episode.characters %}
+    <h2><a href="{{ url_for('get_character', id=character_url.split("/")[-1]) }}" alt="Personagem">Personagem</a></h2>
     {% endfor %}
 </div>
 {% endblock %}
